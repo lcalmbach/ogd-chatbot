@@ -22,7 +22,7 @@ class OgdChat:
         toolkit = SQLDatabaseToolkit(db=self.db, llm=OpenAI(temperature=0))
         agent_executor = create_sql_agent(
             llm=OpenAI(
-                temperature=0, openai_api_key=st.session_state["openai_api_key"]
+                temperature=0, openai_api_key=st.session_state["OPENAI_API_KEY"]
             ),
             toolkit=toolkit,
             verbose=True,

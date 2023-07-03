@@ -56,14 +56,14 @@ def get_intent(prompt: str):
 def main():
     st.title("💬 OpenData-ChatBot")
     if "messages" not in st.session_state:
-        st.session_state["openai_api_key"] = get_var("openai_api_key")
+        st.session_state["OPENAI_API_KEY"] = get_var("OPENAI_API_KEY")
         st.session_state["messages"] = [{"role": "assistant", "content": FIRST_PROMPT}]
 
     for msg in st.session_state.messages:
         st.chat_message(msg["role"]).write(msg["content"])
 
     if prompt := st.chat_input():
-        openai.api_key = st.session_state["openai_api_key"]
+        openai.api_key = st.session_state["OPENAI_API_KEY"]
         st.session_state.messages.append({"role": "user", "content": prompt})
         st.chat_message("user").write(prompt)
         intent = get_intent(prompt)
