@@ -20,10 +20,10 @@ Beispiel 3: Frage: "Wieviele Brücken gibt es in Basel" Antwort: -99
 INTENT_DICT = {
     0: """{{}}. Verwende Tabelle vornamen. Wenn nach Anzahl eines Vornamens gefragt wird, summiere die Spalte 'Anzahl'
     """,
-    1: """{{}}. Verwende Tabelle 'fische' Bei Fragen nach Rhein, verwende Filter: where gewaesser  like 'Rhein%'. Bei Fragen Nach Wiese verwende Filter: where gewaesser  like 'Wiese%'
-    Bei Frage nach Birs verwende Filter: where gewaesser  like 'Birs%', Bei Frage nach Teich oder Neuer Teich oder Mühleteich verwende Filter: where gewaesser  like '%Teich%'
-    Wenn kein Gewässer-Kriterium genannt wird, verwende keinen Filter auf die gewaesser-Spalte
+
+    1: """{{}}. Wenn kein Gewässer-Kriterium genannt wird, verwende keinen Filter auf die gewaesser-Spalte
     Wenn nach laenge sortiert wird, sortiere in der desc Reihenfolge: ###order by laenge desc limit 1###
     Wenn nach längstem Fisch gefragt wird, setze Kriterium ###laenge is not not null###
+    Wenn nach Fischart gefragt wird, setze Kriterium ###fischart is not not null###
     """,
 }

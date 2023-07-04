@@ -6,18 +6,18 @@ from const import FIRST_PROMPT, INTENT_PROMPT
 from ogd_chat import OgdChat
 
 LOCAL_HOST = "liestal"
-__version__ = "0.0.1"
+__version__ = "0.0.2"
 __author__ = "Lukas Calmbach"
 __author_email__ = "lcalmbach@gmail.com"
-VERSION_DATE = "2023-7-01"
-my_name = "OGD-ChatBot"
+VERSION_DATE = "2023-7-02"
+APP_NAME = "OGD-ChatBot"
 GIT_REPO = "https://github.com/lcalmbach/ogd-chatbot"
 APP_INFO = f"""<div style="background-color:powderblue; padding: 10px;border-radius: 15px;">
     <small>App created by <a href="mailto:{__author_email__}">{__author__}</a><br>
-    version: {__version__} ({VERSION_DATE})<br>
-    app powered by <a href="https://streamlit.io/">Streamlit</a>, 
+    Version: {__version__} ({VERSION_DATE})<br>
+    Powered by <a href="https://streamlit.io/">Streamlit</a>, 
     <a href="https://platform.openai.com/">OpenAI API</a> 
-    and <a href="https://github.com/hwchase17/langchain">🦜LangChain</a><br>
+    and<br><a href="https://github.com/hwchase17/langchain">🦜LangChain</a><br>
     <a href="{GIT_REPO}">git-repo</a>
     """
 
@@ -54,6 +54,7 @@ def get_intent(prompt: str):
 
 
 def main():
+    st.set_page_config(page_title=APP_NAME, page_icon='🤖')
     st.title("💬 OpenData-ChatBot")
     if "messages" not in st.session_state:
         st.session_state["OPENAI_API_KEY"] = get_var("OPENAI_API_KEY")
@@ -77,8 +78,9 @@ def main():
         else:
             chat = OgdChat(intent, prompt)
             msg = chat.run()
-            st.session_state.messages.append({"role": "assistant", "content": prompt})
-            st.chat_message("assistant").write(msg)
+            msg = {"role": "assistant", "content": msg}
+            st.session_state.messages.append(msg)
+            st.chat_message("assistant").write(msg['content'])
     st.sidebar.markdown(APP_INFO, unsafe_allow_html=True)
 
 
