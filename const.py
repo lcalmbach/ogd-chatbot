@@ -5,12 +5,11 @@ INTENT_LIST = [
     "Vornamen",
     "Fische",
     "Tägliche Wetter oder Klimadaten",
-    "Welche Themen gibt es hier?",
 ]
 
 INTENT_PROMPT = f"""In welche Kategorie gehört folgende Frage: ###{{}}###. Wähle aus folgenden Kategorien aus: {'|'.join(INTENT_LIST)}
 Antwort Format: Index der passenden Kategorie. Wenn keine Kategorie zutrifft dann antworte mit -99
-Mögliche Antworten: [0, 1, 2, 3, -99]
+Mögliche Antworten: [0, 1, 2, -99]
 Beispiele: 
 Beispiel 1: Frage: "Wieviele Fische wurden total in 2011 gefangen und im welchen Monat waren es die meisten?" Antwort: 1
 Beispiel 2: Frage: "Welches war der häufigste männliche Vorname im Jahr 2015?" Antwort: 0
