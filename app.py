@@ -2,7 +2,7 @@ import socket
 import os
 import openai
 import streamlit as st
-from const import FIRST_PROMPT, INTENT_PROMPT
+from const import FIRST_PROMPT, INTENT_PROMPT, THEME_PROMPT
 from ogd_chat import OgdChat
 
 LOCAL_HOST = "liestal"
@@ -54,7 +54,7 @@ def get_intent(prompt: str):
 
 
 def main():
-    st.set_page_config(page_title=APP_NAME, page_icon='🤖')
+    st.set_page_config(page_title=APP_NAME, page_icon="🤖")
     st.title("💬 OpenData-ChatBot")
     if "messages" not in st.session_state:
         st.session_state["OPENAI_API_KEY"] = get_var("OPENAI_API_KEY")
@@ -74,13 +74,18 @@ def main():
             )
             msg = response.choices[0].message
             st.session_state.messages.append(msg)
-            st.chat_message("assistant").write(msg.content)
+            st.chat_message("assistant").write(msg['content'])
+        elif intent == 3:
+            msg = {"role": "assistant", "content": THEME_PROMPT}
+            st.session_state["messages"] = [msg]
+            st.session_state.messages.append(msg)
+            st.chat_message("assistant").write(msg['content'])
         else:
             chat = OgdChat(intent, prompt)
             msg = chat.run()
             msg = {"role": "assistant", "content": msg}
             st.session_state.messages.append(msg)
-            st.chat_message("assistant").write(msg['content'])
+            st.chat_message("assistant").write(msg["content"])
     st.sidebar.markdown(APP_INFO, unsafe_allow_html=True)
 
 
