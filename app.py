@@ -6,10 +6,10 @@ from const import FIRST_PROMPT, INTENT_PROMPT, THEME_PROMPT
 from ogd_chat import OgdChat
 
 LOCAL_HOST = "liestal"
-__version__ = "0.0.2"
+__version__ = "0.0.3"
 __author__ = "Lukas Calmbach"
 __author_email__ = "lcalmbach@gmail.com"
-VERSION_DATE = "2023-7-02"
+VERSION_DATE = "2023-7-05"
 APP_NAME = "OGD-ChatBot"
 GIT_REPO = "https://github.com/lcalmbach/ogd-chatbot"
 APP_INFO = f"""<div style="background-color:powderblue; padding: 10px;border-radius: 15px;">
