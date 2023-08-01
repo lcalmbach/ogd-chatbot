@@ -3,7 +3,6 @@ import os
 import openai
 import streamlit as st
 
-from const import INTENT_PROMPT, THEME_PROMPT, LANG_LIST
 from ogd_chat import OgdChat
 from helper import refresh_lang, init_lang_options, set_lang_list
 
@@ -11,10 +10,12 @@ LOCAL_HOST = "liestal"
 __version__ = "0.0.4"
 __author__ = "Lukas Calmbach"
 __author_email__ = "lcalmbach@gmail.com"
-VERSION_DATE = "2023-7-09"
+VERSION_DATE = "2023-08-01"
 APP_NAME = "OGD-ChatBot"
 GIT_REPO = "https://github.com/lcalmbach/ogd-chatbot"
 DEFAULT_LANG = "en"
+lang = {}
+
 
 if "lang" not in st.session_state:
     st.set_page_config(page_title=APP_NAME, page_icon="🤖")
@@ -23,13 +24,12 @@ if "lang" not in st.session_state:
     set_lang_list(__file__)
     # set the option dict to fill the lang selection list
     st.session_state["lang_options"] = init_lang_options()
-    # st.experimental_rerun()
 
 
 def get_app_info():
-    created_by = st.session_state["lang_dict"]["app_created_by"]
-    powered_by = st.session_state["lang_dict"]["powered_by"]
-    version = st.session_state["lang_dict"]["version"]
+    created_by = lang["app_created_by"]
+    powered_by = lang["powered_by"]
+    version = lang["version"]
 
     info = f"""<div style="background-color:powderblue; padding: 10px;border-radius: 15px;">
     <small>{created_by} <a href="mailto:{__author_email__}">{__author__}</a><br>
@@ -47,7 +47,7 @@ def display_language_selection():
         st.session_state["lang"]
     )
     x = st.sidebar.selectbox(
-        label=f'🌐{st.session_state["lang_dict"]["language"]}',
+        label=f'🌐{lang["language"]}',
         options=st.session_state["lang_options"].keys(),
         format_func=lambda x: st.session_state["lang_options"][x],
         index=index,
@@ -83,20 +83,25 @@ def get_var(varname: str) -> str:
 
 
 def get_first_prompt():
-    intent_expression = ", ".join(st.session_state["lang_dict"]["intents"])
-    first_prompt = st.session_state["lang_dict"]["first_prompt"].format(
-        intent_expression
-    )
+    intent_expression = ", ".join(lang["intents"])
+    first_prompt = lang["first_prompt"].format(intent_expression)
     return first_prompt
 
 
-def get_intent(prompt: str):
-    prompt = [{"role": "assistant", "content": INTENT_PROMPT.format(prompt)}]
-    response = openai.ChatCompletion.create(model="gpt-3.5-turbo", messages=prompt)
+def get_intent(question: str):
+    intent_list = ", ".join(lang["intents"])
+    messages = [
+        {"role": "system", "content": lang["intent_prompt"].format(intent_list)},
+        {"role": "user", "content": question},
+    ]
+    response = openai.ChatCompletion.create(model="gpt-3.5-turbo", messages=messages)
     return int(response.choices[0].message.content)
 
 
 def main():
+    global lang
+
+    lang = st.session_state["lang_dict"]
     st.title("💬 OpenData-ChatBot")
     display_language_selection()
 
@@ -114,6 +119,7 @@ def main():
 
     if prompt := st.chat_input():
         openai.api_key = st.session_state["OPENAI_API_KEY"]
+
         st.session_state.messages.append({"role": "user", "content": prompt})
         st.chat_message("user").write(prompt)
         intent = get_intent(prompt)
@@ -124,15 +130,11 @@ def main():
             msg = response.choices[0].message
             st.session_state.messages.append(msg)
             st.chat_message("assistant").write(msg["content"])
-        elif intent == 3:
-            msg = {"role": "assistant", "content": THEME_PROMPT}
-            st.session_state["messages"] = [msg]
-            st.session_state.messages.append(msg)
-            st.chat_message("assistant").write(msg["content"])
         else:
             chat = OgdChat(intent, prompt)
-            msg = chat.run()
-            msg = {"role": "assistant", "content": msg}
+            answer = chat.run()
+
+            msg = {"role": "assistant", "content": answer}
             st.session_state.messages.append(msg)
             st.chat_message("assistant").write(msg["content"])
     st.sidebar.markdown(get_app_info(), unsafe_allow_html=True)

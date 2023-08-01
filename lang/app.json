@@ -1,69 +1,83 @@
 {
   "source": {
-    "app-info": "PolyglotGPT allows to translate json formatted text snippets to various other languages using the OpenAI API. The upload must include one implemented language formatted as shown below. The language keys (en, de, fr etc.) must conform to [ISO 639-1 standard](https://en.wikipedia.org/wiki/ISO_639-1). Drag and drop your json language file into the file upload above and press the translate button. The translated file is then displayed and can be downloaded.",
     "language": "Language",
-    "first_prompt": "Hello there! Ask me a question to the following themes '{}'",
-    "intent_prompt": "To which category belongs the following question: ###{{}}###. Select one of the following categories: {'|'.join({{}})}\nAnswer format: Index of the matching category. If no categoriy can be assigned, answer with -99\nPossible answers: [0, 1, 2, -99]\nExamples: \nExample 1: Question: 'how many fisch were caught in the rhine river in 2011?' Answer: 1 \nExample 2: Frage: 'What is the most common mal name in 2014?' Answer: 0 \nExample 3: Question: 'How many bridges exist in Basel across the rhine river' Answer: -99",
+    "first_prompt": "Hello there! Ask me a question to the following data sets: '{}'",
+    "intent_prompt": "You are a friendly assistant. You will receive a text and assign this text to one of the following categories with format: {{index: category}}.\nCategories: ###{}###.\nAnswer format: Index of the matching category. Only answer with the index. If no category can be assigned, answer with -99\nPossible answers: [0, 1, 2, 3, -99]\nExamples: \nQ: 'how many fisch were caught in the rhine river in 2011?'\nA: 1\nQ: 'What is the most common male name in 2014?'\nA: 0 \nQ: 'How many bridges exist in Basel across the rhine river'\nA: -99",
     "intents": [
       "Male and Female firstnames of inhabitants living in Basel",
       "Fish caught in the rivers Rhine, Wiese and Birs near Basel",
-      "Daily climate data from the NBCN weather station Binningen"
+      "Daily climate data from the NBCN weather station Binningen",
+      "Appartments and buildings"
     ],
     "app_created_by": "App created by",
     "powered_by": "Powered by",
     "version": "Version"
   },
   "en": {
-    "app-info": "PolyglotGPT allows to translate json formatted text snippets to various other languages using the OpenAI API. The upload must include one implemented language formatted as shown below. The language keys (en, de, fr etc.) must conform to [ISO 639-1 standard](https://en.wikipedia.org/wiki/ISO_639-1). Drag and drop your json language file into the file upload above and press the translate button. The translated file is then displayed and can be downloaded.",
     "language": "Language",
-    "first_prompt": "Hello there! Ask me a question to the following themes '{}'",
-    "intent_prompt": "To which category belongs the following question: ###{{}}###. Select one of the following categories: {'|'.join({{}})}\nAnswer format: Index of the matching category. If no categoriy can be assigned, answer with -99\nPossible answers: [0, 1, 2, -99]\nExamples: \nExample 1: Question: 'how many fisch were caught in the rhine river in 2011?' Answer: 1 \nExample 2: Frage: 'What is the most common mal name in 2014?' Answer: 0 \nExample 3: Question: 'How many bridges exist in Basel across the rhine river' Answer: -99",
+    "first_prompt": "Hello there! Ask me a question to the following data sets: '{}'",
+    "intent_prompt": "You are a friendly assistant. You will receive a text and assign this text to one of the following categories with format: {{index: category}}.\nCategories: ###{}###.\nAnswer format: Index of the matching category. Only answer with the index. If no category can be assigned, answer with -99\nPossible answers: [0, 1, 2, 3, -99]\nExamples: \nQ: 'how many fisch were caught in the rhine river in 2011?'\nA: 1\nQ: 'What is the most common male name in 2014?'\nA: 0 \nQ: 'How many bridges exist in Basel across the rhine river'\nA: -99",
     "intents": [
       "Male and Female firstnames of inhabitants living in Basel",
       "Fish caught in the rivers Rhine, Wiese and Birs near Basel",
-      "Daily climate data from the NBCN weather station Binningen"
+      "Daily climate data from the NBCN weather station Binningen",
+      "Appartments and buildings"
     ],
     "app_created_by": "App created by",
     "powered_by": "Powered by",
     "version": "Version"
   },
   "de": {
-    "app-info": "PolyglotGPT erm\u00f6glicht die \u00dcbersetzung von JSON-formatierten Textausschnitten in verschiedene andere Sprachen mithilfe der OpenAI-API. Der Upload muss eine implementierte Sprache enthalten, die wie unten gezeigt formatiert ist. Die Sprachschl\u00fcssel (en, de, fr usw.) m\u00fcssen dem [ISO 639-1-Standard](https://de.wikipedia.org/wiki/ISO_639-1) entsprechen. Ziehen Sie Ihre JSON-Sprachdatei in das obige Datei-Upload-Feld und klicken Sie auf die \u00dcbersetzen-Schaltfl\u00e4che. Die \u00fcbersetzte Datei wird dann angezeigt und kann heruntergeladen werden.",
     "language": "Sprache",
-    "first_prompt": "Hallo! Stellen Sie mir eine Frage zu den folgenden Themen '{}'",
-    "intent_prompt": "Zu welcher Kategorie geh\u00f6rt die folgende Frage: ###{{}}###. W\u00e4hlen Sie eine der folgenden Kategorien aus: {'|'.join({{}})}\nAntwortformat: Index der passenden Kategorie. Wenn keine Kategorie zugeordnet werden kann, antworten Sie mit -99\nM\u00f6gliche Antworten: [0, 1, 2, -99]\nBeispiele: \nBeispiel 1: Frage: 'Wie viele Fische wurden im Rhein im Jahr 2011 gefangen?' Antwort: 1 \nBeispiel 2: Frage: 'Was ist der h\u00e4ufigste Vorname im Jahr 2014?' Antwort: 0 \nBeispiel 3: Frage: 'Wie viele Br\u00fccken gibt es in Basel \u00fcber den Rhein?' Antwort: -99",
+    "first_prompt": "Hallo! Stellen Sie mir eine Frage zu den folgenden Datens\u00e4tzen: '{}'",
+    "intent_prompt": "Sie sind ein freundlicher Assistent. Sie erhalten einen Text und ordnen diesen Text einer der folgenden Kategorien mit dem Format zu: {{index: Kategorie}}.\nKategorien: ###{}###.\nAntwortformat: Index der passenden Kategorie. Nur mit dem Index antworten. Wenn keine Kategorie zugeordnet werden kann, mit -99 antworten\nM\u00f6gliche Antworten: [0, 1, 2, 3, -99]\nBeispiele: \nF: 'Wie viele Fische wurden 2011 im Rhein gefangen?'\nA: 1\nF: 'Was ist der h\u00e4ufigste m\u00e4nnliche Name im Jahr 2014?'\nA: 0 \nF: 'Wie viele Br\u00fccken gibt es in Basel \u00fcber den Rhein?'\nA: -99",
     "intents": [
-      "M\u00e4nnliche und weibliche Vornamen der Einwohner von Basel",
+      "M\u00e4nnliche und weibliche Vornamen der Bewohner von Basel",
       "Fische, die in den Fl\u00fcssen Rhein, Wiese und Birs in der N\u00e4he von Basel gefangen wurden",
-      "T\u00e4gliche Klimadaten der Wetterstation NBCN in Binningen"
+      "T\u00e4gliche Klimadaten von der NBCN Wetterstation Binningen",
+      "Wohnungen und Geb\u00e4ude"
     ],
     "app_created_by": "App erstellt von",
     "powered_by": "Powered by",
     "version": "Version"
   },
   "fr": {
-    "app-info": "PolyglotGPT permet de traduire des extraits de texte au format json vers diff\u00e9rentes langues en utilisant l'API OpenAI. Le t\u00e9l\u00e9chargement doit inclure une langue impl\u00e9ment\u00e9e format\u00e9e comme indiqu\u00e9 ci-dessous. Les cl\u00e9s de langue (en, de, fr, etc.) doivent \u00eatre conformes \u00e0 la norme [ISO 639-1](https://en.wikipedia.org/wiki/ISO_639-1). Faites glisser et d\u00e9posez votre fichier de langue json dans le t\u00e9l\u00e9chargement de fichier ci-dessus et appuyez sur le bouton de traduction. Le fichier traduit est ensuite affich\u00e9 et peut \u00eatre t\u00e9l\u00e9charg\u00e9.",
     "language": "Langue",
-    "first_prompt": "Bonjour ! Posez-moi une question sur les th\u00e8mes suivants '{}'",
-    "intent_prompt": "\u00c0 quelle cat\u00e9gorie appartient la question suivante : ###{{}}###. S\u00e9lectionnez l'une des cat\u00e9gories suivantes : {'|'.join({{}})}\nFormat de r\u00e9ponse : Index de la cat\u00e9gorie correspondante. Si aucune cat\u00e9gorie ne peut \u00eatre attribu\u00e9e, r\u00e9pondez avec -99\nR\u00e9ponses possibles : [0, 1, 2, -99]\nExemples :\nExemple 1 : Question : 'combien de poissons ont \u00e9t\u00e9 captur\u00e9s dans le fleuve Rhin en 2011 ?' R\u00e9ponse : 1\nExemple 2 : Question : 'Quel est le nom de mal le plus courant en 2014 ?' R\u00e9ponse : 0\nExemple 3 : Question : 'Combien de ponts existent \u00e0 B\u00e2le sur le fleuve Rhin ?' R\u00e9ponse : -99",
+    "first_prompt": "Bonjour! Posez-moi une question sur les ensembles de donn\u00e9es suivants: '{}'",
+    "intent_prompt": "Vous \u00eates un assistant amical. Vous recevrez un texte et attribuerez ce texte \u00e0 l'une des cat\u00e9gories suivantes avec le format: {{index: cat\u00e9gorie}}.\nCat\u00e9gories: ###{}###.\nFormat de r\u00e9ponse: Index de la cat\u00e9gorie correspondante. R\u00e9pondez uniquement avec l'index. Si aucune cat\u00e9gorie ne peut \u00eatre attribu\u00e9e, r\u00e9pondez avec -99\nR\u00e9ponses possibles: [0, 1, 2, 3, -99]\nExemples:\nQ: 'combien de poissons ont \u00e9t\u00e9 captur\u00e9s dans le fleuve Rhin en 2011?'\nA: 1\nQ: 'Quel est le pr\u00e9nom masculin le plus courant en 2014?'\nA: 0\nQ: 'Combien de ponts existent \u00e0 B\u00e2le sur le fleuve Rhin?'\nA: -99",
     "intents": [
       "Pr\u00e9noms masculins et f\u00e9minins des habitants vivant \u00e0 B\u00e2le",
-      "Poissons captur\u00e9s dans les fleuves Rhin, Wiese et Birs pr\u00e8s de B\u00e2le",
-      "Donn\u00e9es climatiques quotidiennes de la station m\u00e9t\u00e9o NBCN \u00e0 Binningen"
+      "Poissons captur\u00e9s dans les rivi\u00e8res Rhin, Wiese et Birs pr\u00e8s de B\u00e2le",
+      "Donn\u00e9es climatiques quotidiennes de la station m\u00e9t\u00e9orologique NBCN de Binningen",
+      "Appartements et b\u00e2timents"
     ],
     "app_created_by": "Application cr\u00e9\u00e9e par",
     "powered_by": "Propuls\u00e9 par",
     "version": "Version"
   },
+  "it": {
+    "language": "Lingua",
+    "first_prompt": "Ciao! Fai una domanda sui seguenti set di dati: '{}'",
+    "intent_prompt": "Sei un assistente amichevole. Riceverai un testo e assegnerai questo testo a una delle seguenti categorie con il formato: {{indice: categoria}}.\nCategorie: ###{}###.\nFormato di risposta: Indice della categoria corrispondente. Rispondi solo con l'indice. Se non \u00e8 possibile assegnare una categoria, rispondi con -99\nRisposte possibili: [0, 1, 2, 3, -99]\nEsempi: \nD: 'quanti pesci sono stati catturati nel fiume Reno nel 2011?'\nR: 1\nD: 'Qual \u00e8 il nome maschile pi\u00f9 comune nel 2014?'\nR: 0 \nD: 'Quanti ponti esistono a Basilea attraverso il fiume Reno'\nR: -99\nD:{}\nR:{}.",
+    "intents": [
+      "Nomi maschili e femminili degli abitanti di Basilea",
+      "Pesci catturati nei fiumi Reno, Wiese e Birs vicino a Basilea",
+      "Dati climatici giornalieri dalla stazione meteorologica NBCN di Binningen",
+      "Appartamenti e edifici"
+    ],
+    "app_created_by": "App creata da",
+    "powered_by": "Powered by",
+    "version": "Versione"
+  },
   "zh": {
-    "app-info": "PolyglotGPT \u5141\u8bb8\u4f7f\u7528 OpenAI API \u5c06 json \u683c\u5f0f\u7684\u6587\u672c\u7247\u6bb5\u7ffb\u8bd1\u6210\u5176\u4ed6\u5404\u79cd\u8bed\u8a00\u3002\u4e0a\u4f20\u5fc5\u987b\u5305\u542b\u4e00\u4e2a\u6309\u7167\u4e0b\u9762\u6240\u793a\u683c\u5f0f\u7684\u5df2\u5b9e\u73b0\u8bed\u8a00\u3002\u8bed\u8a00\u952e\uff08en\u3001de\u3001fr \u7b49\uff09\u5fc5\u987b\u7b26\u5408 [ISO 639-1 \u6807\u51c6](https://en.wikipedia.org/wiki/ISO_639-1)\u3002\u5c06\u60a8\u7684 json \u8bed\u8a00\u6587\u4ef6\u62d6\u653e\u5230\u4e0a\u9762\u7684\u6587\u4ef6\u4e0a\u4f20\u4e2d\uff0c\u7136\u540e\u6309\u4e0b\u7ffb\u8bd1\u6309\u94ae\u3002\u7136\u540e\u663e\u793a\u7ffb\u8bd1\u540e\u7684\u6587\u4ef6\uff0c\u5e76\u53ef\u4e0b\u8f7d\u3002",
     "language": "\u8bed\u8a00",
-    "first_prompt": "\u4f60\u597d\uff01\u5411\u6211\u63d0\u95ee\u4ee5\u4e0b\u4e3b\u9898\u7684\u95ee\u9898'{}'",
-    "intent_prompt": "\u4ee5\u4e0b\u95ee\u9898\u5c5e\u4e8e\u54ea\u4e2a\u7c7b\u522b\uff1a###{{}}###\u3002\u8bf7\u9009\u62e9\u4ee5\u4e0b\u7c7b\u522b\u4e4b\u4e00\uff1a{'|'.join({{}})}\n\u7b54\u6848\u683c\u5f0f\uff1a\u5339\u914d\u7c7b\u522b\u7684\u7d22\u5f15\u3002\u5982\u679c\u65e0\u6cd5\u5206\u914d\u7c7b\u522b\uff0c\u8bf7\u56de\u7b54-99\n\u53ef\u80fd\u7684\u7b54\u6848\uff1a[0, 1, 2, -99]\n\u793a\u4f8b\uff1a\n\u793a\u4f8b 1\uff1a\u95ee\u9898\uff1a'2011 \u5e74\u83b1\u8335\u6cb3\u6355\u83b7\u4e86\u591a\u5c11\u6761\u9c7c\uff1f' \u7b54\u6848\uff1a1\n\u793a\u4f8b 2\uff1a\u95ee\u9898\uff1a'2014 \u5e74\u6700\u5e38\u89c1\u7684\u7537\u6027\u540d\u5b57\u662f\u4ec0\u4e48\uff1f' \u7b54\u6848\uff1a0\n\u793a\u4f8b 3\uff1a\u95ee\u9898\uff1a'\u5df4\u585e\u5c14\u5e02\u83b1\u8335\u6cb3\u4e0a\u6709\u591a\u5c11\u5ea7\u6865\u6881\uff1f' \u7b54\u6848\uff1a-99",
+    "first_prompt": "\u4f60\u597d\uff01\u5411\u6211\u63d0\u95ee\u4ee5\u4e0b\u6570\u636e\u96c6\uff1a'{}'",
+    "intent_prompt": "\u4f60\u662f\u4e00\u4e2a\u53cb\u597d\u7684\u52a9\u624b\u3002\u4f60\u5c06\u6536\u5230\u4e00\u6bb5\u6587\u672c\uff0c\u5e76\u5c06\u8be5\u6587\u672c\u5206\u914d\u7ed9\u4ee5\u4e0b\u7c7b\u522b\u4e4b\u4e00\uff0c\u683c\u5f0f\u4e3a\uff1a{{index: category}}\u3002\n\u7c7b\u522b\uff1a###{}###\u3002\n\u7b54\u6848\u683c\u5f0f\uff1a\u5339\u914d\u7c7b\u522b\u7684\u7d22\u5f15\u3002\u53ea\u56de\u7b54\u7d22\u5f15\u3002\u5982\u679c\u65e0\u6cd5\u5206\u914d\u7c7b\u522b\uff0c\u8bf7\u56de\u7b54-99\n\u53ef\u80fd\u7684\u7b54\u6848\uff1a[0, 1, 2, 3, -99]\n\u793a\u4f8b\uff1a\nQ: '2011\u5e74\u83b1\u8335\u6cb3\u6355\u83b7\u4e86\u591a\u5c11\u6761\u9c7c\uff1f'\nA: 1\nQ: '2014\u5e74\u6700\u5e38\u89c1\u7684\u7537\u6027\u540d\u5b57\u662f\u4ec0\u4e48\uff1f'\nA: 0\nQ: '\u5df4\u585e\u5c14\u5e02\u6709\u591a\u5c11\u5ea7\u6a2a\u8de8\u83b1\u8335\u6cb3\u7684\u6865\u6881\uff1f'\nA: -99\nQ:{}\nA:{}.",
     "intents": [
       "\u5df4\u585e\u5c14\u5c45\u6c11\u7684\u7537\u6027\u548c\u5973\u6027\u540d\u5b57",
-      "\u5df4\u585e\u5c14\u9644\u8fd1\u83b1\u8335\u6cb3\u3001\u7ef4\u745f\u6cb3\u548c\u6bd4\u5c14\u65af\u6cb3\u6355\u83b7\u7684\u9c7c\u7c7b",
-      "\u6765\u81ea Binningen NBCN \u6c14\u8c61\u7ad9\u7684\u6bcf\u65e5\u6c14\u5019\u6570\u636e"
+      "\u5728\u5df4\u585e\u5c14\u9644\u8fd1\u7684\u83b1\u8335\u6cb3\u3001\u7ef4\u745f\u6cb3\u548c\u6bd4\u5c14\u65af\u6cb3\u6355\u83b7\u7684\u9c7c\u7c7b",
+      "\u6765\u81eaBinningen NBCN\u6c14\u8c61\u7ad9\u7684\u6bcf\u65e5\u6c14\u5019\u6570\u636e",
+      "\u516c\u5bd3\u548c\u5efa\u7b51\u7269"
     ],
     "app_created_by": "\u5e94\u7528\u7a0b\u5e8f\u521b\u5efa\u8005",
     "powered_by": "\u7531...\u63d0\u4f9b\u52a8\u529b",
