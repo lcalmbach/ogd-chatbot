@@ -7,18 +7,19 @@ from ogd_chat import OgdChat
 from helper import refresh_lang, init_lang_options, set_lang_list
 
 LOCAL_HOST = "liestal"
-__version__ = "0.0.4"
+__version__ = "0.0.5"
 __author__ = "Lukas Calmbach"
 __author_email__ = "lcalmbach@gmail.com"
-VERSION_DATE = "2023-08-01"
+VERSION_DATE = "2023-10-24"
 APP_NAME = "OGD-ChatBot"
 GIT_REPO = "https://github.com/lcalmbach/ogd-chatbot"
 DEFAULT_LANG = "en"
+EMOJI = "🤖"
 lang = {}
 
 
 if "lang" not in st.session_state:
-    st.set_page_config(page_title=APP_NAME, page_icon="🤖")
+    st.set_page_config(page_title=APP_NAME, page_icon=EMOJI)
     refresh_lang(__file__, DEFAULT_LANG)
     # find lang list which is needed for the init_lang_options routine
     set_lang_list(__file__)
@@ -94,9 +95,13 @@ def get_intent(question: str):
         {"role": "system", "content": lang["intent_prompt"].format(intent_list)},
         {"role": "user", "content": question},
     ]
+    
     response = openai.ChatCompletion.create(model="gpt-3.5-turbo", messages=messages)
-    return int(response.choices[0].message.content)
-
+    try:
+        return int(response.choices[0].message.content)
+    except ValueError:
+        return -99
+    
 
 def main():
     global lang
@@ -104,6 +109,7 @@ def main():
     lang = st.session_state["lang_dict"]
     st.title("💬 OpenData-ChatBot")
     display_language_selection()
+    show_train_of_thought = st.sidebar.checkbox(lang["show_train_of_thought"], False)
 
     if "messages" not in st.session_state:
         st.session_state["OPENAI_API_KEY"] = get_var("OPENAI_API_KEY")
@@ -124,6 +130,7 @@ def main():
         st.chat_message("user").write(prompt)
         intent = get_intent(prompt)
         if intent == -99:
+            st.write(intent)
             response = openai.ChatCompletion.create(
                 model="gpt-3.5-turbo", messages=st.session_state.messages
             )
@@ -131,7 +138,7 @@ def main():
             st.session_state.messages.append(msg)
             st.chat_message("assistant").write(msg["content"])
         else:
-            chat = OgdChat(intent, prompt)
+            chat = OgdChat(intent, prompt, show_train_of_thought)
             answer = chat.run()
 
             msg = {"role": "assistant", "content": answer}

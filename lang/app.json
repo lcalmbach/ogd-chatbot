@@ -11,7 +11,8 @@
     ],
     "app_created_by": "App created by",
     "powered_by": "Powered by",
-    "version": "Version"
+    "version": "Version",
+    "show_train_of_thought": "Show train of thought"
   },
   "en": {
     "language": "Language",
@@ -25,7 +26,8 @@
     ],
     "app_created_by": "App created by",
     "powered_by": "Powered by",
-    "version": "Version"
+    "version": "Version",
+    "show_train_of_thought": "Show train of thought"
   },
   "de": {
     "language": "Sprache",
@@ -39,7 +41,8 @@
     ],
     "app_created_by": "App erstellt von",
     "powered_by": "Powered by",
-    "version": "Version"
+    "version": "Version",
+    "show_train_of_thought": "Gedankengang anzeigen"
   },
   "fr": {
     "language": "Langue",
@@ -53,7 +56,8 @@
     ],
     "app_created_by": "Application cr\u00e9\u00e9e par",
     "powered_by": "Propuls\u00e9 par",
-    "version": "Version"
+    "version": "Version",
+    "show_train_of_thought": "Afficher le fil de la pens\u00e9e"
   },
   "it": {
     "language": "Lingua",
@@ -67,7 +71,8 @@
     ],
     "app_created_by": "App creata da",
     "powered_by": "Powered by",
-    "version": "Versione"
+    "version": "Versione",
+    "show_train_of_thought": "Mostra il filo del pensiero"
   },
   "zh": {
     "language": "\u8bed\u8a00",
@@ -81,6 +86,7 @@
     ],
     "app_created_by": "\u5e94\u7528\u7a0b\u5e8f\u521b\u5efa\u8005",
     "powered_by": "\u7531...\u63d0\u4f9b\u52a8\u529b",
-    "version": "\u7248\u672c"
+    "version": "\u7248\u672c",
+    "show_train_of_thought": "\u5c55\u793a\u601d\u7ef4\u7684\u8109\u7ea1"
   }
 }
