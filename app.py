@@ -130,7 +130,6 @@ def main():
         st.chat_message("user").write(prompt)
         intent = get_intent(prompt)
         if intent == -99:
-            st.write(intent)
             response = openai.ChatCompletion.create(
                 model="gpt-3.5-turbo", messages=st.session_state.messages
             )

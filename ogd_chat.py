@@ -1,17 +1,9 @@
 import streamlit as st
-from langchain.agents import create_sql_agent
+from langchain.llms.openai import OpenAI
+from langchain.agents import AgentType, create_sql_agent
 from langchain.agents.agent_toolkits import SQLDatabaseToolkit
 from langchain.sql_database import SQLDatabase
-from langchain.llms.openai import OpenAI
 from langchain.callbacks import StreamlitCallbackHandler
-
-# from langchain.agents import AgentExecutor
-from langchain.agents.agent_types import AgentType
-
-# from langchain.chat_models import ChatOpenAI
-
-# from langchain.agents import load_tools
-# from langchain.agents import initialize_agent
 
 
 class OgdChat:
@@ -33,7 +25,7 @@ class OgdChat:
             agent_type=AgentType.ZERO_SHOT_REACT_DESCRIPTION,
         )
         if self.show_train_of_thought:
-            st_callback = StreamlitCallbackHandler(st.container())
+            st_callback = StreamlitCallbackHandler(st.container(), max_thought_containers=10, expand_new_thoughts=False)
             response = agent_executor.run(self.prompt, callbacks=[st_callback])
         else:
             response = agent_executor.run(self.prompt)
