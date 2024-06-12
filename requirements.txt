@@ -1,5 +1,5 @@
 streamlit==1.35.0
 langchain==0.2.3
 langchain-community==0.2.4
-openai==0.2.8
+openai==0.28.0
 iso639>=0.1.4

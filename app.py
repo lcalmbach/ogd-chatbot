@@ -7,10 +7,10 @@ from ogd_chat import OgdChat
 from helper import refresh_lang, init_lang_options, set_lang_list
 
 LOCAL_HOST = "liestal"
-__version__ = "0.0.5"
+__version__ = "0.0.6"
 __author__ = "Lukas Calmbach"
 __author_email__ = "lcalmbach@gmail.com"
-VERSION_DATE = "2023-10-24"
+VERSION_DATE = "2024-06-12"
 APP_NAME = "OGD-ChatBot"
 GIT_REPO = "https://github.com/lcalmbach/ogd-chatbot"
 DEFAULT_LANG = "en"
@@ -106,8 +106,9 @@ def get_intent(question: str):
 def main():
     global lang
 
+    st.sidebar.image('./logo-agent.png', width = 120)
     lang = st.session_state["lang_dict"]
-    st.title("💬 OpenData-ChatBot")
+    st.title("💬 KI-SQL-Agent")
     display_language_selection()
     show_train_of_thought = st.sidebar.checkbox(lang["show_train_of_thought"], False)
 
